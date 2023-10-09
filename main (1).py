@@ -1,12 +1,31 @@
-#write the program that detrmines whether a yearentered by the useris a leap year or not using if- elif-else statements.
+'''Implement a function called sort_students that takes a list of student objects as input and sorts the list based on their CGPA (Cumulative Grade Point Average) in descending order. Each student object has the following attributes: name (string), roll_number (string), and cgpa (float). Test the function with different input lists of students.'''
 
-def isLeapYear(year):
- if (year % 4 == 0 and year % 100 !=0) or year % 400 == 0:
-   return True
- else:
-   return False
+class Student:
 
-year = int(input("Enter a year :"))
+  def __init__(self, name, roll_number, cgpa):
+    self.name = name
+    self.roll_number = roll_number
+    self.cgpa = cgpa
 
-if isLeapYear(year):
-  print('{} is not a leap year.'.format(year))
+
+def sort_students(student_list):
+  #Sort the list of students in descending order of CGPA
+  sorted_students = sorted(student_list, 
+         key=lambda student: student.cgpa, 
+         reverse=True)
+#Syntax_lambda arg:exp
+  return sorted_students
+
+#Example usage:
+students = [ 
+    Student("dinesh", "A123", 7.8),  
+    Student("siva", "A124", 8.9),
+    Student("kumar", "A125", 9.1), 
+    Student("Ram", "A126", 9.9),
+ ]
+
+sorted_students = sort_students(students)
+
+# print the sorted list of students 
+for student in sorted_students:
+  print("Name: {}, Roll Number: {}, CGPA:{}".format(student.name, student.roll_number, student.cgpa))
